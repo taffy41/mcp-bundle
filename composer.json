@@ -1,7 +1,7 @@
 {
-    "name": "php-llm/mcp-bundle",
+    "name": "symfony/mcp-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony integration bundle for Model Context Protocol (via php-llm/mcp-sdk)",
+    "description": "Symfony integration bundle for Model Context Protocol (via symfony/mcp-sdk)",
     "license": "MIT",
     "authors": [
         {
@@ -10,28 +10,30 @@
         }
     ],
     "require": {
-        "php-llm/mcp-sdk": "^0.1",
         "symfony/config": "^6.4 || ^7.0",
         "symfony/console": "^6.4 || ^7.0",
         "symfony/dependency-injection": "^6.4 || ^7.0",
         "symfony/framework-bundle": "^6.4 || ^7.0",
         "symfony/http-foundation": "^6.4 || ^7.0",
         "symfony/http-kernel": "^6.4 || ^7.0",
+        "symfony/mcp-sdk": "@dev",
         "symfony/routing": "^6.4 || ^7.0"
     },
     "require-dev": {
-        "php-cs-fixer/shim": "dev-master",
-        "phpstan/phpstan": "2.1.x-dev",
-        "rector/rector": "dev-main"
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^11.5"
     },
     "config": {
         "sort-packages": true
     },
     "autoload": {
         "psr-4": {
-            "PhpLlm\\McpBundle\\": "src/"
+            "Symfony\\AI\\McpBundle\\": "src/"
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        { "type": "path", "url": "../mcp-sdk" }
+    ]
 }

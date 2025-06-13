@@ -1,12 +1,19 @@
 <?php
 
-declare(strict_types=1);
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-namespace PhpLlm\McpBundle\DependencyInjection;
+namespace Symfony\AI\McpBundle\DependencyInjection;
 
-use PhpLlm\McpBundle\Command\McpCommand;
-use PhpLlm\McpBundle\Controller\McpController;
-use PhpLlm\McpBundle\Routing\RouteLoader;
+use Symfony\AI\McpBundle\Command\McpCommand;
+use Symfony\AI\McpBundle\Controller\McpController;
+use Symfony\AI\McpBundle\Routing\RouteLoader;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -16,7 +23,7 @@ final class McpExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $loader = new PhpFileLoader($container, new FileLocator(dirname(__DIR__).'/Resources/config'));
+        $loader = new PhpFileLoader($container, new FileLocator(\dirname(__DIR__).'/Resources/config'));
         $loader->load('services.php');
 
         $configuration = new Configuration();

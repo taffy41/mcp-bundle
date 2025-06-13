@@ -1,29 +1,36 @@
 <?php
 
-declare(strict_types=1);
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use PhpLlm\McpSdk\Message\Factory;
-use PhpLlm\McpSdk\Server;
-use PhpLlm\McpSdk\Server\JsonRpcHandler;
-use PhpLlm\McpSdk\Server\NotificationHandler;
-use PhpLlm\McpSdk\Server\NotificationHandler\InitializedHandler;
-use PhpLlm\McpSdk\Server\RequestHandler;
-use PhpLlm\McpSdk\Server\RequestHandler\InitializeHandler;
-use PhpLlm\McpSdk\Server\RequestHandler\PingHandler;
-use PhpLlm\McpSdk\Server\RequestHandler\ToolCallHandler;
-use PhpLlm\McpSdk\Server\RequestHandler\ToolListHandler;
-use PhpLlm\McpSdk\Server\Transport\Sse\Store\CachePoolStore;
+use Symfony\AI\McpSdk\Message\Factory;
+use Symfony\AI\McpSdk\Server;
+use Symfony\AI\McpSdk\Server\JsonRpcHandler;
+use Symfony\AI\McpSdk\Server\NotificationHandler\InitializedHandler;
+use Symfony\AI\McpSdk\Server\NotificationHandlerInterface;
+use Symfony\AI\McpSdk\Server\RequestHandler\InitializeHandler;
+use Symfony\AI\McpSdk\Server\RequestHandler\PingHandler;
+use Symfony\AI\McpSdk\Server\RequestHandler\ToolCallHandler;
+use Symfony\AI\McpSdk\Server\RequestHandler\ToolListHandler;
+use Symfony\AI\McpSdk\Server\RequestHandlerInterface;
+use Symfony\AI\McpSdk\Server\Transport\Sse\Store\CachePoolStore;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
         ->defaults()
             ->autowire()
             ->autoconfigure()
-        ->instanceof(NotificationHandler::class)
+        ->instanceof(NotificationHandlerInterface::class)
             ->tag('mcp.server.notification_handler')
-        ->instanceof(RequestHandler::class)
+        ->instanceof(RequestHandlerInterface::class)
             ->tag('mcp.server.request_handler')
 
         ->set(InitializedHandler::class)

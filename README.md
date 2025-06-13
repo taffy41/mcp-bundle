@@ -1,14 +1,14 @@
 # MCP Bundle [WIP]
 
-Symfony integration bundle for [Model Context Protocol](https://modelcontextprotocol.io/) using the unofficial
-PHP SDK [php-llm/mcp-sdk](https://github.com/php-llm/mcp-sdk) library.
+Symfony integration bundle for [Model Context Protocol](https://modelcontextprotocol.io/) using the Symfony AI
+MCP SDK [symfony/mcp-sdk](https://github.com/symfony/mcp-sdk).
 
 **Currently only supports tools as server via Server-Sent Events (SSE) and STDIO.**
 
 ## Installation
 
 ```bash
-composer require php-llm/mcp-bundle
+composer require symfony/mcp-bundle
 ```
 
 ## Usage
@@ -33,8 +33,8 @@ connect to. You can use either  STDIO or Server-Sent Events (SSE) as transport m
 
 You can find a list of example Servers in the [MCP Server List](https://modelcontextprotocol.io/examples).
 
-Tools of those servers are available in your [LLM Chain Bundle](https://github.com/php-llm/llm-chain-bundle)
-configuration and usable in your chains.
+Tools of those servers are available in your [AI Bundle](https://github.com/symfony/ai-bundle)
+configuration and usable in your agents.
 
 ## Configuration
 
@@ -44,11 +44,11 @@ mcp:
     version: '1.0.0' # Application version to be exposed to clients
 
     # Configure this application to act as an MCP server
-    # Currently exposes tools registered in LLM Chain
+    # Currently exposes tools registered in Symfony AI Bundle
     client_transports:
         stdio: true # Enable STDIO via command
         sse: true # Enable Server-Sent Event via controller
-    
+
     # Configure MCP servers to be used by this application
     # Not implemented yet
     servers:

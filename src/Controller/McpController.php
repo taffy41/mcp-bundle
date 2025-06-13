@@ -1,12 +1,19 @@
 <?php
 
-declare(strict_types=1);
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-namespace PhpLlm\McpBundle\Controller;
+namespace Symfony\AI\McpBundle\Controller;
 
-use PhpLlm\McpSdk\Server;
-use PhpLlm\McpSdk\Server\Transport\Sse\Store\CachePoolStore;
-use PhpLlm\McpSdk\Server\Transport\Sse\StreamTransport;
+use Symfony\AI\McpSdk\Server;
+use Symfony\AI\McpSdk\Server\Transport\Sse\Store\CachePoolStore;
+use Symfony\AI\McpSdk\Server\Transport\Sse\StreamTransport;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
